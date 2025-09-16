@@ -6,9 +6,20 @@ import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 
 export const PortfolioSection = (): React.JSX.Element => {
+  type Product = {
+    title: string;
+    backgroundImage: string;
+    category: string;
+    description: string;
+    previewImages: string[];
+    link: string | null;
+  };
+
   const [activeFilter, setActiveFilter] = useState("All");
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+
+
   const portfolioCards = [
     {
       title: "Dsinta",
@@ -115,8 +126,8 @@ export const PortfolioSection = (): React.JSX.Element => {
   ];
 
   // Filter portfolio cards based on active filter
-  const filteredCards = activeFilter === "All" 
-    ? portfolioCards 
+  const filteredCards = activeFilter === "All"
+    ? portfolioCards
     : portfolioCards.filter(card => card.category === activeFilter);
 
   const openProductPopup = (product: any) => {
@@ -128,8 +139,9 @@ export const PortfolioSection = (): React.JSX.Element => {
   };
 
   // Fungsi untuk membuka link di tab baru
-  const openLink = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const openLink = (url: string | null) => {
+    if (!url) return;
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -153,11 +165,10 @@ export const PortfolioSection = (): React.JSX.Element => {
               <Badge
                 key={index}
                 variant={activeFilter === tag ? "default" : "secondary"}
-                className={`h-auto px-4 py-2 md:px-6 md:py-[15px] rounded-3xl text-sm md:text-xl cursor-pointer transition-colors ${
-                  activeFilter === tag 
-                    ? "bg-orange-400 text-white" 
+                className={`h-auto px-4 py-2 md:px-6 md:py-[15px] rounded-3xl text-sm md:text-xl cursor-pointer transition-colors ${activeFilter === tag
+                    ? "bg-orange-400 text-white"
                     : "bg-gray-100 hover:bg-gray-200 text-black"
-                }`}
+                  }`}
                 onClick={() => setActiveFilter(tag)}
               >
                 {tag}
@@ -260,7 +271,7 @@ export const PortfolioSection = (): React.JSX.Element => {
               {/* Action Buttons - Hanya muncul jika link tersedia */}
               {selectedProduct.link && (
                 <div className="flex gap-4 mt-8 flex-wrap">
-                  <Button 
+                  <Button
                     className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-3 rounded-xl flex items-center gap-2"
                     onClick={() => openLink(selectedProduct.link)}
                   >

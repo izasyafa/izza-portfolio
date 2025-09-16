@@ -46,7 +46,7 @@ const Navbar = () => {
   }, []);
 
   // Fungsi untuk menangani klik pada item navigasi
-  const handleNavClick = (id) => {
+  const handleNavClick = (id: string) => {
     setActiveSection(id);
     setIsOpen(false);
     
