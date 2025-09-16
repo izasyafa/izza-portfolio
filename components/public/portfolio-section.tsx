@@ -58,7 +58,7 @@ export const PortfolioSection = (): React.JSX.Element => {
       title: "Memauth",
       backgroundImage: "/assets/images/memauth-1.png",
       category: "Management Information System",
-      description: "Memauth is a verification platform that ensures images displayed on company websites (such as partnership or collaboration banners) are authentic and officially validated. It provides a way to confirm that the claimed partnerships truly exist and issues a certificate of authenticity as proof. The application is built with Laravel as the backend, Nuxt.js as the frontend, and uses PostgreSQL as the database.",
+      description: "Memauth is a verification platform that ensures images displayed on company websites (such as partnership or collaboration banners) are authentic and officially validated. It provides a way to confirm that the claimed partnerships truly exist and issues a certificate of authenticity as proof. The application is built with Laravel as the backend, Nuxt.js with Typescript as the frontend, and uses PostgreSQL as the database.",
       previewImages: [
         "/assets/images/memauth-1.png",
         "/assets/images/memauth-2.png"
