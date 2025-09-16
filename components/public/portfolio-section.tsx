@@ -111,12 +111,12 @@ export const PortfolioSection = (): React.JSX.Element => {
     },
     {
       title: "Bungah Dental Care",
-      backgroundImage: "/assets/images/chat-1.png",
+      backgroundImage: "/assets/images/dental-1.png",
       category: "Portfolio Project",
       description: "A company profile website for a dental clinic located in Semarang. Built with Next.js and TypeScript, the project follows clean architecture principles to ensure maintainable, scalable, and well-structured code. The website presents the clinic’s services, team, and contact information in a professional and user-friendly manner, emphasizing both functionality and modern design.",
       previewImages: [
-        "/assets/images/chat-1.png",
-        "/assets/images/chat-2.png"
+        "/assets/images/dental-1.png",
+        "/assets/images/dental-2.png"
       ],
       link: null
     },
