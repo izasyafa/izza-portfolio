@@ -30,41 +30,46 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
+// 🔥 Gunakan union: props bisa button atau anchor
+type ButtonAsButton = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  href?: undefined;
+};
+type ButtonAsAnchor = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+};
+
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  href?: string; // tambahkan support href
 }
 
-const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, href, ...props }, ref) => {
-    const Comp = asChild || href ? Slot : "button";
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps & (ButtonAsButton | ButtonAsAnchor)
+>(({ className, variant, size, asChild = false, href, ...props }, ref) => {
+  const Comp = asChild || href ? Slot : "button";
 
-    // Jika ada href dan tidak pakai asChild, pakai <a>
-    if (href && !asChild) {
-      return (
-        <a
-          className={cn(buttonVariants({ variant, size, className }))}
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href}
-          {...props}
-        />
-      );
-    }
-
+  if (href && !asChild) {
     return (
-      <Comp
+      <a
         className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref as React.Ref<any>}
-        {...props}
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        {...(props as ButtonAsAnchor)}
       />
     );
   }
-);
+
+  return (
+    <Comp
+      className={cn(buttonVariants({ variant, size, className }))}
+      ref={ref as React.Ref<HTMLButtonElement>}
+      {...(props as ButtonAsButton)}
+    />
+  );
+});
 
 Button.displayName = "Button";
 
