@@ -123,7 +123,7 @@ export const PortfolioSection = (): React.JSX.Element => {
     {
       title: "Sonic Admin",
       backgroundImage: "/assets/images/sonic-1.png",
-      category: "Portfolio Project",
+      category: "Management Information System",
       description: "A web application for managing customer, voucher, and driver data, performing driver verification, and viewing dashboard statistics. Built with Nuxt.js and TypeScript on the frontend, and implementing Express.js for the backend API. The platform emphasizes efficient data management and provides a clean, user-friendly interface for administrative operations.",
       previewImages: [
         "/assets/images/sonic-1.png",
