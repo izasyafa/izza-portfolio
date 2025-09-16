@@ -109,6 +109,28 @@ export const PortfolioSection = (): React.JSX.Element => {
       ],
       link: null
     },
+    {
+      title: "Bungah Dental Care",
+      backgroundImage: "/assets/images/chat-1.png",
+      category: "Portfolio Project",
+      description: "A company profile website for a dental clinic located in Semarang. Built with Next.js and TypeScript, the project follows clean architecture principles to ensure maintainable, scalable, and well-structured code. The website presents the clinic’s services, team, and contact information in a professional and user-friendly manner, emphasizing both functionality and modern design.",
+      previewImages: [
+        "/assets/images/chat-1.png",
+        "/assets/images/chat-2.png"
+      ],
+      link: null
+    },
+    {
+      title: "Sonic Admin",
+      backgroundImage: "/assets/images/sonic-1.png",
+      category: "Portfolio Project",
+      description: "A web application for managing customer, voucher, and driver data, performing driver verification, and viewing dashboard statistics. Built with Nuxt.js and TypeScript on the frontend, and implementing Express.js for the backend API. The platform emphasizes efficient data management and provides a clean, user-friendly interface for administrative operations.",
+      previewImages: [
+        "/assets/images/sonic-1.png",
+        "/assets/images/sonic-2.png"
+      ],
+      link: null
+    },
   ];
 
   const paginationDots = [
@@ -138,7 +160,6 @@ export const PortfolioSection = (): React.JSX.Element => {
     setSelectedProduct(null);
   };
 
-  // Fungsi untuk membuka link di tab baru
   const openLink = (url: string | null) => {
     if (!url) return;
     window.open(url, "_blank", "noopener,noreferrer");
